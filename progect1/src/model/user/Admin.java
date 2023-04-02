@@ -6,18 +6,20 @@ import java.util.ArrayList;
 
 public class Admin extends Account {
     private static Admin admin;
-    private ArrayList<Commodity>commodities = new ArrayList<>();
+    private ArrayList<Commodity>commodities ;
     private ArrayList<CustomerRequest> requests = new ArrayList<>();
-    private Admin(String email,String phoneNumber,String passWord,String userName)
+    private Admin(String email,String phoneNumber,String password,String userName)
     {
-        super(email,phoneNumber,passWord,userName);
+        super(email,phoneNumber,password,userName);
+        commodities =new ArrayList<>();
     }
-    public Admin getAdmin(String email,String phoneNumber,String passWord,String userName){
-        if (admin == null)
-            admin = new Admin(email,phoneNumber,passWord,userName);
+    public static Admin getAdmin(String email,String phoneNumber,String password,String userName)
+    {
+        if(admin==null)
+            admin=new Admin(email,phoneNumber,password,userName);
         return admin;
     }
-    public Admin getAdmin(){return admin;}
+    public static Admin getAdmin(){return admin;}
 
     public ArrayList<CustomerRequest> getRequests() {
         return requests;
@@ -34,4 +36,11 @@ public class Admin extends Account {
     public void setCommodities(ArrayList<Commodity> commodities) {
         this.commodities = commodities;
     }
+   /* @Override
+   public String toString(){
+        StringBuilder commoditiesList = new StringBuilder();
+        for (Commodity commodity : this.commodities)
+            commoditiesList.append(commodity.toString()+"\n");
+        return commoditiesList.toString();
+    }*/
 }

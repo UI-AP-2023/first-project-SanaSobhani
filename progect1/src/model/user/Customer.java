@@ -36,4 +36,13 @@ public class Customer extends Account {
     public void setCredit(int credit) {
         this.credit = credit;
     }
+    @Override
+    public String toString()
+    {
+        StringBuilder info ;
+        info = new StringBuilder("UserName: " + getUserName() + " PassWord: " + getPassWord() + " Credit: " + credit + " phoneNumber: " + getPhoneNumber() + "\t"+" Basket: ");
+        for (int i = 0;i<shoppingBasket.size();i++)
+            info.append(shoppingBasket.get(i).getName()+"/");
+        return info.toString();
+    }
 }
