@@ -1,5 +1,9 @@
 package controller;
 
+import model.commodity.Comment;
+import model.commodity.Commodity;
+import model.commodity.CommodityScore;
+import model.user.Admin;
 import model.user.Customer;
 import model.user.CustomerRequest;
 import model.user.RequestType;
@@ -8,38 +12,29 @@ import java.util.ArrayList;
 import java.util.regex.*;
 
 public class CustomerController {
-    private ArrayList<Customer> customers;
-    private ArrayList<CustomerRequest> customerRequests;
-    private Customer customerPointer;
+    private static ArrayList<Customer> customers;
+    private static Customer customerPointer;
 
     public CustomerController() {
         customers = new ArrayList<>();
-        customerRequests = new ArrayList<>();
     }
 
     public Customer getCustomerPointer() {
         return customerPointer;
     }
 
-    public void setCustomerPointer(Customer customerPointer) {
+    public void  setCustomerPointer(Customer customerPointer) {
         this.customerPointer = customerPointer;
     }
 
-    public ArrayList<Customer> getCustomers() {
+    public static ArrayList<Customer> getCustomers() {
         return customers;
     }
 
-    public void setCustomers(ArrayList<Customer> customers) {
-        this.customers = customers;
+    public static void setCustomers(ArrayList<Customer> customers) {
+        customers = customers;
     }
 
-    public ArrayList<CustomerRequest> getCustomerRequests() {
-        return customerRequests;
-    }
-
-    public void setCustomerRequests(ArrayList<CustomerRequest> customerRequests) {
-        this.customerRequests = customerRequests;
-    }
 
     boolean emailValidation(String email) {
         Pattern valid = Pattern.compile("^[A-Za-z0-9._%+-]+@[a-z]+\\.[a-z]{2,6}$");
@@ -78,7 +73,7 @@ public class CustomerController {
             return false;
         Customer customer = new Customer(eMail, phoneNumber, passWord, userName);
         CustomerRequest customerRequest = new CustomerRequest(RequestType.SIGNUP, customer);
-        customerRequests.add(customerRequest);
+        Admin.getAdmin().getRequests().add(customerRequest);
         return true;
     }
 
@@ -136,5 +131,29 @@ public class CustomerController {
         else
             return false;
     }
+    public boolean grading(int score,String name){
+        CommodityScore commodityScore = new CommodityScore(customerPointer,score);
+        for(int i = 0;i<customerPointer.getShoppingHistory().size();i++)
+        {
+            for(int j = 0;j<customerPointer.getShoppingHistory().get(i).getCommodities().size();i++) {
+                if (customerPointer.getShoppingHistory().get(i).getCommodities().get(j).getName().compareTo(name) == 0){
+                    customerPointer.getShoppingHistory().get(i).getCommodities().get(j).getCommodityScores().add(commodityScore);
+                    CommodityController.AverageCalculation(customerPointer.getShoppingHistory().get(i).getCommodities().get(j));
+                    return true;
+            }
+            }
+        }
+        return false;
+    }
+  public static void sendingComment(String txt, Commodity commodity){
+      Comment comment = new Comment(txt,commodity.getCommodityID(),customerPointer);
+        for (int i =0;i<customerPointer.getShoppingHistory().size();i++){
+            for(int j =0;j<customerPointer.getShoppingHistory().get(i).getCommodities().size();j++){
+                if(customerPointer.getShoppingHistory().get(i).getCommodities().get(j).equals(commodity)==true)
+                    comment.setBought(true);
+            }
+        }
+      Admin.getAdmin().getRequests().add(new CustomerRequest(RequestType.COMMENT,customerPointer,comment));
+  }
 }
 
