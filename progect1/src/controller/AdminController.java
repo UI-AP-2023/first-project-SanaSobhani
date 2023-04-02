@@ -1,5 +1,6 @@
 package controller;
 
+import com.sun.deploy.nativesandbox.comm.Request;
 import model.commodity.*;
 import model.user.*;
 
@@ -66,14 +67,23 @@ public class AdminController {
                  Admin.getAdmin().getCommodities().get(i).setCost(cost);
          }
      }
-        public static void removeCommodity(String iD){
+     public static void removeCommodity(String iD){
             for (int i = 0;i<Admin.getAdmin().getCommodities().size();i++)
             {
                 if(Admin.getAdmin().getCommodities().get(i).getCommodityID().compareTo(iD)==0)
                     Admin.getAdmin().getCommodities().remove(Admin.getAdmin().getCommodities().get(i));
             }
          }
-
+    public static void commentDetermination(boolean isAccepted,int requestNumber){
+      if(isAccepted == true)
+          Admin.getAdmin().getRequests().get(requestNumber).getComment().findCommodity().getComments().add(Admin.getAdmin().getRequests().get(requestNumber).getComment());
+    }
+    public static void signUpDetermination(boolean isAccepted,int requestNumber)
+    {
+        if(isAccepted==true)
+            CustomerController.getCustomers().add(Admin.getAdmin().getRequests().get(requestNumber).getCustomer());
+    }
+    //increasing credit
  }
 
 
