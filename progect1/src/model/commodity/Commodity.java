@@ -6,10 +6,11 @@ public abstract class Commodity {
     private String commodityID;
     private String name;
     private int cost;
-    private CommodityScore score;
+    private int averageScore;
     private CommodityCategory category;
     private int amountOfInventory;
     private static int count;      //for making ID
+    private ArrayList<CommodityScore> commodityScores = new ArrayList<>();
     private ArrayList<Comment> comments = new ArrayList<>();
    public Commodity(String name,int cost,CommodityCategory category,int amountOfInventory)
     {
@@ -71,13 +72,7 @@ public abstract class Commodity {
         this.comments = comments;
     }
 
-    public CommodityScore getScore() {
-        return score;
-    }
 
-    public void setScore(CommodityScore score) {
-        this.score = score;
-    }
 
     public int getAmountOfInventory() {
         return amountOfInventory;
@@ -88,4 +83,19 @@ public abstract class Commodity {
     }
     public int getCount(){return count;}
 
+    public ArrayList<CommodityScore> getCommodityScores() {
+        return commodityScores;
+    }
+
+    public void setCommodityScores(ArrayList<CommodityScore> commodityScores) {
+        this.commodityScores = commodityScores;
+    }
+
+    public int getAverageScore() {
+        return averageScore;
+    }
+
+    public void setAverageScore(int averageScore) {
+        this.averageScore = averageScore;
+    }
 }

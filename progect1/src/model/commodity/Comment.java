@@ -14,11 +14,16 @@ public class Comment {
       this.commodityID = commodityID;
       this.text = text;
       this.customer = customer;
-      for (int i =0;i< Admin.getAdmin().getCommodities().size();i++){
+      /*for (int i =0;i< Admin.getAdmin().getCommodities().size();i++){
           if(Admin.getAdmin().getCommodities().get(i).getCommodityID().compareTo(commodityID)==0)
-              Admin.getAdmin().getCommodities().get(i).getComments().add(this);}
+              Admin.getAdmin().getCommodities().get(i).getComments().add(this);}*/
   }
-
+  public Commodity findCommodity() {
+      for (int i = 0; i < Admin.getAdmin().getCommodities().size(); i++)
+          if (Admin.getAdmin().getCommodities().get(i).getCommodityID().compareTo(commodityID) == 0)
+          {return Admin.getAdmin().getCommodities().get(i);}
+      return null;
+  }
     public String getText() {
         return text;
     }
@@ -43,7 +48,7 @@ public class Comment {
         this.customer = customer;
     }
 
-    public boolean isBought() {
+    public boolean getBought() {
         return isBought;
     }
 

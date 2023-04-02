@@ -5,11 +5,10 @@ import model.user.Customer;
 public class CommodityScore {
    private Customer customer;
    private int point;
-   private Commodity commodity;
+   //private Commodity commodity;
 
-   public CommodityScore(Customer customer,int point,Commodity commodity)
+   public CommodityScore(Customer customer,int point)
    {
-       this.commodity = commodity;
        this.customer = customer;
        this.point = point;
    }
@@ -28,14 +27,6 @@ public class CommodityScore {
 
     public void setPoint(int point) {
         this.point = point;
-    }
-
-    public Commodity getCommodity() {
-        return commodity;
-    }
-
-    public void setCommodity(Commodity commodity) {
-        this.commodity = commodity;
     }
     @Override
     public String toString()
