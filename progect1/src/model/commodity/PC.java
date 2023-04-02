@@ -24,4 +24,9 @@ public class PC extends DigitalCommodity{
     public void setCapacityOfRAM(int capacityOfRAM) {
         this.capacityOfRAM = capacityOfRAM;
     }
+    @Override
+    public String toString()
+    {
+        return "Name: "+getName()+" Cost: "+getCost()+" ID: "+getCommodityID()+" CapacityOfRAM: "+ capacityOfRAM+" VersionOfCPU: "+versionOfCPU+" Inventory: "+getAmountOfInventory();
+    }
 }

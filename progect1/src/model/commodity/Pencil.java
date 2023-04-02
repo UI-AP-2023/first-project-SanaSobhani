@@ -15,5 +15,9 @@ public class Pencil extends Stationery{
     public void setType(PencilType type) {
         this.type = type;
     }
+    @Override
+    public String toString()
+    {
+        return "Name: "+getName()+" Cost: "+getCost()+" ID: "+getCommodityID()+" ManufacturingCountry: "+getManufacturingCountry()+" Type: "+type.name()+" Inventory: "+getAmountOfInventory();
+    }
 }
-enum PencilType{HB,B,F,H,_2H;}

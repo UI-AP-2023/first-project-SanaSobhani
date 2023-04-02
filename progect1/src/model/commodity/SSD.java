@@ -25,4 +25,9 @@ public class SSD extends StorageDevice{
     public void setReadSpeed(int readSpeed) {
         this.readSpeed = readSpeed;
     }
+    @Override
+    public String toString()
+    {
+        return "Name: "+getName()+" Cost: "+getCost()+" ID: "+getCommodityID()+" Capacity: "+ getCapacity()+" WriteSpeed: "+writeSpeed+" ReadSpeed: "+readSpeed+" Inventory: "+getAmountOfInventory();
+    }
 }

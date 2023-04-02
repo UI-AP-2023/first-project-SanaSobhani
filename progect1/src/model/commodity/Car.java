@@ -23,4 +23,9 @@ public class Car extends Vehicle{
     public void setEngineVolume(int engineVolume) {
         this.engineVolume = engineVolume;
     }
+    @Override
+    public String toString()
+    {
+        return "Name: "+getName()+" Cost: "+getCost()+" ID: "+getCommodityID()+" Company: "+getCompany()+" Is Automatic? "+isAutomatic+" EngineVolume: "+engineVolume+" Inventory: "+getAmountOfInventory();
+    }
 }

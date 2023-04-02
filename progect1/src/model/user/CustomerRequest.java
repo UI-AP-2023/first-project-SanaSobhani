@@ -3,8 +3,10 @@ package model.user;
 public class CustomerRequest {
     private boolean isAccepted;
     private RequestType type;
-    public CustomerRequest(RequestType type){
+    Customer customer;
+    public CustomerRequest(RequestType type,Customer customer){
         this.type = type;
+        this.customer = customer;
     }
 
     public boolean isAccepted() {
@@ -22,5 +24,9 @@ public class CustomerRequest {
     public void setType(RequestType type) {
         this.type = type;
     }
+    @Override
+    public String toString()
+    {
+        return "Customer: "+customer+" RequestType: "+type.name();
+    }
 }
-enum RequestType{SIGNUP,COMMENT,INCREASECREDIT}

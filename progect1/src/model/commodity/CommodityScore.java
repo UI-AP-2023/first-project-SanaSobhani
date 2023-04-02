@@ -37,5 +37,10 @@ public class CommodityScore {
     public void setCommodity(Commodity commodity) {
         this.commodity = commodity;
     }
+    @Override
+    public String toString()
+    {
+        return "Customer: "+customer+" Point: "+point;
+    }
 
 }

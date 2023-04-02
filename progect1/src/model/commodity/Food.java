@@ -24,4 +24,9 @@ public class Food extends Commodity{
     public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
     }
+    @Override
+    public String toString()
+    {
+        return "Name: "+getName()+" Cost: "+getCost()+" ID: "+getCommodityID()+" ManufactureDate: "+ manufactureDate+" ExpirationDate: "+expirationDate+" Inventory: "+getAmountOfInventory();
+    }
 }

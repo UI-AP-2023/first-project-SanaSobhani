@@ -14,5 +14,9 @@ public class Bicycle extends Vehicle{
     public void setType(BikeType type) {
         this.type = type;
     }
+    @Override
+   public String toString()
+    {
+        return "Name: "+getName()+" Cost: "+getCost()+" ID: "+getCommodityID()+" Company: "+getCompany()+" BikeType: "+type+" Inventory: "+getAmountOfInventory();
+    }
 }
-enum BikeType{MOUNTAIN,HYBRID,CITY,ROAD;}

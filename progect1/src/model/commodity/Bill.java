@@ -52,8 +52,18 @@ public class Bill {
         iD.append("_");
         iD.append(date);
         iD.append("_");
-        iD.append("cost:");
+        iD.append("cost_");
         iD.append(cost);
+        iD.append("_");
+        iD.append(billCount);
         this.billID = iD.toString();
+    }
+    @Override
+    public String toString()
+    {
+        StringBuilder info = new StringBuilder("ID: "+billID+" Date: "+date+" Cost: "+cost+"\t"+" CommodityList: ");
+        for (int i =0;i<commodities.size();i++)
+            info.append(commodities.get(i).getName()+"/");
+        return info.toString();
     }
 }
