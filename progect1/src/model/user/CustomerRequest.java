@@ -7,6 +7,7 @@ public class CustomerRequest {
     private RequestType type;
     Customer customer;
    private Comment comment;
+  private int increaseCredit;
     public CustomerRequest(RequestType type,Customer customer){
         this.type = type;
         this.customer = customer;
@@ -15,6 +16,11 @@ public class CustomerRequest {
         this.customer = customer;
         this.type = type;
         this.comment = comment;
+    }
+    public CustomerRequest(RequestType type,Customer customer,int increaseCredit){
+        this.increaseCredit = increaseCredit;
+        this.type = type;
+        this.customer = customer;
     }
 
     public void setCustomer(Customer customer) {
@@ -52,5 +58,13 @@ public class CustomerRequest {
 
     public void setComment(Comment comment) {
         this.comment = comment;
+    }
+
+    public int getIncreaseCredit() {
+        return increaseCredit;
+    }
+
+    public void setIncreaseCredit(int increaseCredit) {
+        this.increaseCredit = increaseCredit;
     }
 }
