@@ -83,7 +83,10 @@ public class AdminController {
         if(isAccepted==true)
             CustomerController.getCustomers().add(Admin.getAdmin().getRequests().get(requestNumber).getCustomer());
     }
-    //increasing credit
+    public static void increaseCreditDetermination(boolean isAccepted,int requestNumber){
+      if(isAccepted==true)
+          Admin.getAdmin().getRequests().get(requestNumber).getCustomer().setCredit(Admin.getAdmin().getRequests().get(requestNumber).getIncreaseCredit());
+    }
  }
 
 
