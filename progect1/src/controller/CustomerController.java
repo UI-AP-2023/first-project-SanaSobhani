@@ -1,14 +1,13 @@
 package controller;
 
-import model.commodity.Comment;
-import model.commodity.Commodity;
-import model.commodity.CommodityScore;
+import model.commodity.*;
 import model.user.Admin;
 import model.user.Customer;
 import model.user.CustomerRequest;
 import model.user.RequestType;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.regex.*;
 
 public class CustomerController {
@@ -23,7 +22,7 @@ public class CustomerController {
         return customerPointer;
     }
 
-    public void  setCustomerPointer(Customer customerPointer) {
+    public void setCustomerPointer(Customer customerPointer) {
         this.customerPointer = customerPointer;
     }
 
@@ -55,14 +54,14 @@ public class CustomerController {
     }
 
     public boolean signUp(String userName, String passWord, String phoneNumber, String eMail) {
-        for (int i = 0; i < customers.size(); i++) {
-            if (userName.compareTo(customers.get(i).getUserName()) == 0)
+        for (Customer value : customers) {
+            if (userName.compareTo(value.getUserName()) == 0)
                 return false;
-            if (passWord.compareTo(customers.get(i).getPassWord()) == 0)
+            if (passWord.compareTo(value.getPassWord()) == 0)
                 return false;
-            if (phoneNumber.compareTo(customers.get(i).getPhoneNumber()) == 0)
+            if (phoneNumber.compareTo(value.getPhoneNumber()) == 0)
                 return false;
-            if (eMail.compareTo(customers.get(i).getEmail()) == 0)
+            if (eMail.compareTo(value.getEmail()) == 0)
                 return false;
         }
         if (emailValidation(eMail) == false)
@@ -88,72 +87,210 @@ public class CustomerController {
         }
         return false;
     }
-    public  boolean editPassWord(String newPassWord)
-    {
-        for(int i = 0;i<customers.size();i++){
-            if (customers.get(i).getPassWord().compareTo(newPassWord)==0){
+
+    public boolean editPassWord(String newPassWord) {
+        for (int i = 0; i < customers.size(); i++) {
+            if (customers.get(i).getPassWord().compareTo(newPassWord) == 0) {
                 return false;
             }
         }
-        if(passWordValidation(newPassWord)==true)
-        {
+        if (passWordValidation(newPassWord) == true) {
             customerPointer.setPassWord(newPassWord);
             return true;
         }
         return false;
     }
-    public boolean editPhoneNumber(String newPhoneNumber)
-    {
-        for (int i = 0;i<customers.size();i++)
-        {
-            if(customers.get(i).getPhoneNumber().compareTo(newPhoneNumber)==0)
+
+    public boolean editPhoneNumber(String newPhoneNumber) {
+        for (int i = 0; i < customers.size(); i++) {
+            if (customers.get(i).getPhoneNumber().compareTo(newPhoneNumber) == 0)
                 return false;
         }
-        if(phoneValidation(newPhoneNumber)==true) {
+        if (phoneValidation(newPhoneNumber) == true) {
             customerPointer.setPhoneNumber(newPhoneNumber);
             return true;
-        }
-        else
+        } else
             return false;
     }
-    public  boolean editEmail(String newEmail)
-    {
-        for (int i = 0;i<customers.size();i++)
-        {
-            if(customers.get(i).getEmail().compareTo(newEmail)==0)
+
+    public boolean editEmail(String newEmail) {
+        for (int i = 0; i < customers.size(); i++) {
+            if (customers.get(i).getEmail().compareTo(newEmail) == 0)
                 return false;
         }
-        if(emailValidation(newEmail)==true)
-        {
+        if (emailValidation(newEmail) == true) {
             customerPointer.setEmail(newEmail);
             return true;
-        }
-        else
+        } else
             return false;
     }
-    public boolean grading(int score,String name){
-        CommodityScore commodityScore = new CommodityScore(customerPointer,score);
-        for(int i = 0;i<customerPointer.getShoppingHistory().size();i++)
-        {
-            for(int j = 0;j<customerPointer.getShoppingHistory().get(i).getCommodities().size();i++) {
-                if (customerPointer.getShoppingHistory().get(i).getCommodities().get(j).getName().compareTo(name) == 0){
+
+    public boolean grading(int score, String name) {
+        CommodityScore commodityScore = new CommodityScore(customerPointer, score);
+        for (int i = 0; i < customerPointer.getShoppingHistory().size(); i++) {
+            for (int j = 0; j < customerPointer.getShoppingHistory().get(i).getCommodities().size(); i++) {
+                if (customerPointer.getShoppingHistory().get(i).getCommodities().get(j).getName().compareTo(name) == 0) {
                     customerPointer.getShoppingHistory().get(i).getCommodities().get(j).getCommodityScores().add(commodityScore);
                     CommodityController.AverageCalculation(customerPointer.getShoppingHistory().get(i).getCommodities().get(j));
                     return true;
-            }
+                }
             }
         }
         return false;
     }
-  public static void sendingComment(String txt, Commodity commodity){
-      Comment comment = new Comment(txt,commodity.getCommodityID(),customerPointer);
-        for (int i =0;i<customerPointer.getShoppingHistory().size();i++){
-            for(int j =0;j<customerPointer.getShoppingHistory().get(i).getCommodities().size();j++){
-                if(customerPointer.getShoppingHistory().get(i).getCommodities().get(j).equals(commodity)==true)
+
+    public static void sendingComment(String txt, Commodity commodity) {
+        Comment comment = new Comment(txt, commodity.getCommodityID(), customerPointer);
+        for (int i = 0; i < customerPointer.getShoppingHistory().size(); i++) {
+            for (int j = 0; j < customerPointer.getShoppingHistory().get(i).getCommodities().size(); j++) {
+                if (customerPointer.getShoppingHistory().get(i).getCommodities().get(j).equals(commodity) == true)
                     comment.setBought(true);
             }
         }
-      Admin.getAdmin().getRequests().add(new CustomerRequest(RequestType.COMMENT,customerPointer,comment));
-  }
+        Admin.getAdmin().getRequests().add(new CustomerRequest(RequestType.COMMENT, customerPointer, comment));
+    }
+
+    public static boolean cvv2Validation(String cvv2) {
+        Pattern pattern = Pattern.compile("[0-9]{3}");
+        return pattern.matcher(cvv2).find();
+    }
+
+    public static boolean cardNumberValidation(String cardNumber) {
+        Pattern pattern = Pattern.compile("[0-9]{4}\\s[0-9]{4}\\s[0-9]{4}\\s[0-9]{4}");
+        return pattern.matcher(cardNumber).find();
+    }
+
+    public static boolean cardPasswordValidation(String cardPassword) {
+        Pattern pattern = Pattern.compile("[0-9]{6}");
+        return pattern.matcher(cardPassword).find();
+    }
+
+    public boolean increasingCredit(int credit, String cvv2, String cardPassword, String cardNumber) {
+        int validation = 0;
+        if (cardPasswordValidation(cardPassword) == true)
+            validation++;
+        if (cardNumberValidation(cardNumber) == true)
+            validation++;
+        if (cvv2Validation(cvv2) == true)
+            validation++;
+        if (validation == 3) {
+            Admin.getAdmin().getRequests().add(new CustomerRequest(RequestType.INCREASECREDIT, customerPointer, credit));
+            return true;
+        } else
+            return false;
+    }
+
+    public Commodity searchCommodity(String name) {
+        for (int i = 0; i < Admin.getAdmin().getCommodities().size(); i++) {
+            if (Admin.getAdmin().getCommodities().get(i).getName().compareTo(name) == 0)
+                return Admin.getAdmin().getCommodities().get(i);
+        }
+        return null;
+    }
+
+    public ArrayList<DigitalCommodity> filterDigitalCommodity() {
+        ArrayList<DigitalCommodity> digitalCommodities = new ArrayList<>();
+        for (Commodity commodity : Admin.getAdmin().getCommodities()) {
+            if (commodity.getCategory().equals(CommodityCategory.DIGITAL) == true)
+                digitalCommodities.add((DigitalCommodity) commodity);
+        }
+        return digitalCommodities;
+    }
+
+    public ArrayList<Stationery> filterStationery() {
+        ArrayList<Stationery> stationeries = new ArrayList<>();
+        for (Commodity commodity : Admin.getAdmin().getCommodities()) {
+            if (commodity.getCategory().equals(CommodityCategory.STATIONERY) == true)
+                stationeries.add((Stationery) commodity);
+        }
+        return stationeries;
+    }
+
+    public ArrayList<Food> filterFood() {
+        ArrayList<Food> foods = new ArrayList<>();
+        for (Commodity commodity : Admin.getAdmin().getCommodities()) {
+            if (commodity.getCategory().equals(CommodityCategory.FOOD) == true)
+                foods.add((Food) commodity);
+        }
+        return foods;
+    }
+
+    public ArrayList<Vehicle> filterVehicle() {
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        for (Commodity commodity : Admin.getAdmin().getCommodities()) {
+            if (commodity.getCategory().equals(CommodityCategory.VEHICLE) == true)
+                vehicles.add((Vehicle) commodity);
+        }
+        return vehicles;
+    }
+
+    public ArrayList<Commodity> filterInventory() {
+        ArrayList<Commodity> commodities = new ArrayList<>();
+        for (Commodity find : Admin.getAdmin().getCommodities()) {
+            if (find.getAmountOfInventory() != 0)
+                commodities.add(find);
+        }
+        return commodities;
+    }
+
+    public ArrayList<Commodity> filterCost(int costLimit) {
+        ArrayList<Commodity> commodities = new ArrayList<>();
+        for (Commodity find : Admin.getAdmin().getCommodities()) {
+            if (find.getCost() <= costLimit)
+                commodities.add(find);
+        }
+        return commodities;
+    }
+
+    public boolean makingShoppingBasket(String name, int count) {
+
+        for (Commodity find : Admin.getAdmin().getCommodities()) {
+            if (find.getName().compareTo(name) == 0 && find.getAmountOfInventory() >= count) {
+                for (int i = 0; i < count; i++) {
+                    customerPointer.getShoppingBasket().add(find);
+                }
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+    public void removeCommodity(String name) {
+        for (Commodity find : customerPointer.getShoppingBasket()) {
+            if (find.getName().compareTo(name) == 0 && find.getAmountOfInventory()!=0)
+                customerPointer.getShoppingBasket().remove(find);
+        }
+    }
+
+    public boolean buy() {
+        int cost =0;
+        Date date = new Date();
+       ArrayList<Commodity> bought = new ArrayList<>();
+        for (Commodity commodity : customerPointer.getShoppingBasket())
+        {
+            if(commodity.getCount()==0)
+                customerPointer.getShoppingBasket().remove(commodity);
+        }
+        for (Commodity commodity : customerPointer.getShoppingBasket())
+        {
+            cost+=commodity.getCost();
+            bought.add(commodity);
+        }
+        if(customerPointer.getCredit()>=cost)
+        {
+            for (Commodity find : customerPointer.getShoppingBasket())
+            {
+                find.setAmountOfInventory(find.getAmountOfInventory()-1);
+            }
+            customerPointer.setCredit(customerPointer.getCredit()-cost);
+            customerPointer.getShoppingHistory().add(new Bill(bought,date.toString(),cost));
+            customerPointer.getShoppingBasket().clear();
+            return true;
+        }
+        return false;
+    }
+
 }
+
 
