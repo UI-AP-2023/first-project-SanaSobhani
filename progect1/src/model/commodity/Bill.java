@@ -6,7 +6,7 @@ public class Bill {
    private String billID;
    private int cost;
    private String date;
-   private ArrayList<Commodity>commodities=new ArrayList<>() ;
+   private ArrayList<Commodity>commodities=new ArrayList<>();
     private static int billCount;            //for making unique id
     public Bill(ArrayList<Commodity> commodities,String date,int cost){
         this.commodities =commodities;
