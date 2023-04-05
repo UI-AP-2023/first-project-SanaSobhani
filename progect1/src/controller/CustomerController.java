@@ -1,24 +1,21 @@
 package controller;
 
 import model.commodity.*;
-import model.user.Admin;
-import model.user.Customer;
-import model.user.CustomerRequest;
-import model.user.RequestType;
+import model.user.*;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.*;
 
 public class CustomerController {
-    private static ArrayList<Customer> customers;
+    private static ArrayList<Customer> customers =new ArrayList<>();
     private static Customer customerPointer;
 
     public CustomerController() {
-        customers = new ArrayList<>();
+
     }
 
-    public Customer getCustomerPointer() {
+    public static Customer getCustomerPointer() {
         return customerPointer;
     }
 
@@ -180,13 +177,7 @@ public class CustomerController {
             return false;
     }
 
-    public Commodity searchCommodity(String name) {
-        for (int i = 0; i < Admin.getAdmin().getCommodities().size(); i++) {
-            if (Admin.getAdmin().getCommodities().get(i).getName().compareTo(name) == 0)
-                return Admin.getAdmin().getCommodities().get(i);
-        }
-        return null;
-    }
+
 
     public ArrayList<DigitalCommodity> filterDigitalCommodity() {
         ArrayList<DigitalCommodity> digitalCommodities = new ArrayList<>();
@@ -223,25 +214,6 @@ public class CustomerController {
         }
         return vehicles;
     }
-
-    public ArrayList<Commodity> filterInventory() {
-        ArrayList<Commodity> commodities = new ArrayList<>();
-        for (Commodity find : Admin.getAdmin().getCommodities()) {
-            if (find.getAmountOfInventory() != 0)
-                commodities.add(find);
-        }
-        return commodities;
-    }
-
-    public ArrayList<Commodity> filterCost(int costLimit) {
-        ArrayList<Commodity> commodities = new ArrayList<>();
-        for (Commodity find : Admin.getAdmin().getCommodities()) {
-            if (find.getCost() <= costLimit)
-                commodities.add(find);
-        }
-        return commodities;
-    }
-
     public boolean makingShoppingBasket(String name, int count) {
 
         for (Commodity find : Admin.getAdmin().getCommodities()) {
@@ -255,7 +227,6 @@ public class CustomerController {
         }
         return false;
     }
-
     public void removeCommodity(String name) {
         for (Commodity find : customerPointer.getShoppingBasket()) {
             if (find.getName().compareTo(name) == 0 && find.getAmountOfInventory()!=0)
@@ -272,10 +243,12 @@ public class CustomerController {
             if(commodity.getCount()==0)
                 customerPointer.getShoppingBasket().remove(commodity);
         }
+        if(customerPointer.getShoppingBasket().size()==0)
+            return false;
         for (Commodity commodity : customerPointer.getShoppingBasket())
         {
             cost+=commodity.getCost();
-            bought.add(commodity);
+            //bought.add(commodity);
         }
         if(customerPointer.getCredit()>=cost)
         {

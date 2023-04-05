@@ -9,6 +9,7 @@ public class AdminController {
   {
       Admin.getAdmin("sanaacc26@gmail.com","09023133159","admin","admin");
   }
+  CustomerController customerController = new CustomerController();
  public static void addFlashMemory(String name,int cost,int weight,String dimension,int capacity,String version,int amountOfInventory)
  {
     FlashMemory flash = new FlashMemory(name,cost,weight,dimension,capacity,version,amountOfInventory);
@@ -77,15 +78,26 @@ public class AdminController {
     public static void commentDetermination(boolean isAccepted,int requestNumber){
       if(isAccepted == true)
           Admin.getAdmin().getRequests().get(requestNumber).getComment().findCommodity().getComments().add(Admin.getAdmin().getRequests().get(requestNumber).getComment());
+      Admin.getAdmin().getRequests().remove(Admin.getAdmin().getRequests().get(requestNumber));
     }
     public static void signUpDetermination(boolean isAccepted,int requestNumber)
     {
         if(isAccepted==true)
             CustomerController.getCustomers().add(Admin.getAdmin().getRequests().get(requestNumber).getCustomer());
+        Admin.getAdmin().getRequests().remove(Admin.getAdmin().getRequests().get(requestNumber));
+
     }
     public static void increaseCreditDetermination(boolean isAccepted,int requestNumber){
       if(isAccepted==true)
           Admin.getAdmin().getRequests().get(requestNumber).getCustomer().setCredit(Admin.getAdmin().getRequests().get(requestNumber).getIncreaseCredit());
+      Admin.getAdmin().getRequests().remove(Admin.getAdmin().getRequests().get(requestNumber));
+
+    }
+    public boolean logInAsAdmin(String userName,String passWord){
+      if(userName.compareTo(Admin.getAdmin().getUserName())==0&&passWord.compareTo(Admin.getAdmin().getUserName())==0)
+          return true;
+      else
+          return false;
     }
  }
 
