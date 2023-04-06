@@ -1,20 +1,20 @@
 package model.commodity;
 
 public class PC extends DigitalCommodity{
-   private String versionOfCPU;
+   private String CPUModel;
     private int capacityOfRAM;
-    public PC(String name,int cost,int weight,String dimension,String versionOfCPU,int capacityOfRAM,int amountOfInventory){
+    public PC(String name,int cost,int weight,String dimension,String CPUModel,int capacityOfRAM,int amountOfInventory){
         super(name,cost,weight,dimension,amountOfInventory);
         this.capacityOfRAM = capacityOfRAM;
-        this.versionOfCPU = versionOfCPU;
+        this.CPUModel =CPUModel;
     }
 
     public String getVersionOfCPU() {
-        return versionOfCPU;
+        return CPUModel;
     }
 
-    public void setVersionOfCPU(String versionOfCPU) {
-        this.versionOfCPU = versionOfCPU;
+    public void setVersionOfCPU(String CPUModel) {
+        this.CPUModel = CPUModel;
     }
 
     public int getCapacityOfRAM() {
@@ -27,6 +27,6 @@ public class PC extends DigitalCommodity{
     @Override
     public String toString()
     {
-        return "Name: "+getName()+" Cost: "+getCost()+" ID: "+getCommodityID()+" CapacityOfRAM: "+ capacityOfRAM+" VersionOfCPU: "+versionOfCPU+" Inventory: "+getAmountOfInventory();
+        return "Name: "+getName()+" Cost: "+getCost()+" ID: "+getCommodityID()+" CapacityOfRAM: "+ capacityOfRAM+" VersionOfCPU: "+CPUModel+" Inventory: "+getAmountOfInventory();
     }
 }
