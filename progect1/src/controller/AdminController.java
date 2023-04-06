@@ -20,9 +20,9 @@ public class AdminController {
      SSD ssd = new SSD (name,cost,weight,dimension,capacity,writeSpeed,readSpeed,amountOfInventory);
      Admin.getAdmin().getCommodities().add(ssd);
  }
- public static void addPC(String name,int cost,int weight,String dimension,String versionOfCPU,int capacityOfRAM,int amountOfInventory)
+ public static void addPC(String name,int cost,int weight,String dimension,String CPUModel,int capacityOfRAM,int amountOfInventory)
  {
-     PC pc = new PC(name,cost,weight,dimension,versionOfCPU,capacityOfRAM,amountOfInventory);
+     PC pc = new PC(name,cost,weight,dimension,CPUModel,capacityOfRAM,amountOfInventory);
      Admin.getAdmin().getCommodities().add(pc);
  }
  public static void addPencil(String name, int cost, String manufacturingCountry, PencilType type, int amountOfInventory)
