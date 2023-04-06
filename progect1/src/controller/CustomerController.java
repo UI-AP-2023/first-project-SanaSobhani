@@ -179,23 +179,23 @@ public class CustomerController {
 
 
 
-    public ArrayList<DigitalCommodity> filterDigitalCommodity() {
+   /* public ArrayList<DigitalCommodity> filterDigitalCommodity() {
         ArrayList<DigitalCommodity> digitalCommodities = new ArrayList<>();
         for (Commodity commodity : Admin.getAdmin().getCommodities()) {
             if (commodity.getCategory().equals(CommodityCategory.DIGITAL) == true)
                 digitalCommodities.add((DigitalCommodity) commodity);
         }
         return digitalCommodities;
-    }
+    }*/
 
-    public ArrayList<Stationery> filterStationery() {
+    /*public ArrayList<Stationery> filterStationery() {
         ArrayList<Stationery> stationeries = new ArrayList<>();
         for (Commodity commodity : Admin.getAdmin().getCommodities()) {
             if (commodity.getCategory().equals(CommodityCategory.STATIONERY) == true)
                 stationeries.add((Stationery) commodity);
         }
         return stationeries;
-    }
+    }*/
 
     public ArrayList<Food> filterFood() {
         ArrayList<Food> foods = new ArrayList<>();
@@ -248,7 +248,7 @@ public class CustomerController {
         for (Commodity commodity : customerPointer.getShoppingBasket())
         {
             cost+=commodity.getCost();
-            //bought.add(commodity);
+            bought.add(commodity);
         }
         if(customerPointer.getCredit()>=cost)
         {
