@@ -131,7 +131,7 @@ public class CommodityController {
         return noteBooks;
     }
     public static ArrayList<Car> filterCar(){
-        ArrayList<Commodity>commodities =filterCategory("Vehicle");
+        ArrayList<Commodity>commodities =filterCategory("VEHICLE");
         ArrayList<Vehicle> vehicles = new ArrayList<>();
         ArrayList<Car> cars = new ArrayList<>();
         for(Commodity commodity : commodities)
@@ -144,7 +144,7 @@ public class CommodityController {
         return cars;
     }
     public static ArrayList<Bicycle> filterBike(){
-        ArrayList<Commodity>commodities =filterCategory("Vehicle");
+        ArrayList<Commodity>commodities =filterCategory("VEHICLE");
         ArrayList<Vehicle> vehicles = new ArrayList<>();
         ArrayList<Bicycle> bicycles = new ArrayList<>();
         for(Commodity commodity : commodities)
@@ -157,7 +157,7 @@ public class CommodityController {
         return bicycles;
     }
     public static ArrayList<PC> filterPC(){
-        ArrayList<Commodity>commodities =filterCategory("DigitalCommodity");
+        ArrayList<Commodity>commodities =filterCategory("DIGITAL");
         ArrayList<DigitalCommodity> digitalCommodities = new ArrayList<>();
         ArrayList<PC> pcs = new ArrayList<>();
         for(Commodity commodity : commodities)
@@ -170,7 +170,7 @@ public class CommodityController {
         return pcs;
     }
     public static ArrayList<StorageDevice> filterStorageDevice(){
-        ArrayList<Commodity>commodities =filterCategory("DigitalCommodity");
+        ArrayList<Commodity>commodities =filterCategory("DIGITAL");
         ArrayList<DigitalCommodity> digitalCommodities = new ArrayList<>();
         ArrayList<StorageDevice>storageDevices = new ArrayList<>();
         for(Commodity commodity : commodities)
@@ -210,7 +210,7 @@ public class CommodityController {
         ArrayList<Bicycle>bicycles=filterBike();
         ArrayList<Bicycle>bikeList=new ArrayList<>();
         for (Bicycle bicycle : bicycles)
-            if(bicycle.getType().name().compareTo(type)==0)
+            if(bicycle.getBikeType().name().compareTo(type)==0)
                 bikeList.add(bicycle);
         return bikeList;
     }
