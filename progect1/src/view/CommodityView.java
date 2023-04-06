@@ -65,11 +65,12 @@ public class CommodityView {
             }
         }
     }
-    public void commodityMainView()
+    public  void commodityMainView()
     {
         System.out.println("**Commodity menu**");
         showAllCommodities();
-        System.out.println("Enter name of the commodity if you want search and  go to commodity page(if you dont want enter Exit)");
+        filter();
+        /*System.out.println("Enter name of the commodity if you want search and  go to commodity page(if you dont want enter Exit)");
         boolean search = true;
         while (search==true)
         {
@@ -79,20 +80,20 @@ public class CommodityView {
                 search=false;
             else
             showCommodity(commodityController.searchCommodity(option));
-
-        }
+        }*/
     }
-    public void filterView()
+    public  void filterView()
     {
         System.out.println("**filter**");
         System.out.println("1. Category(DIGITAL,STATIONERY,VEHICLE,FOOD)\n2. Cost\n3. Inventory\n4. CommoditiesWithHighScore\n5. StationaryCountry\n6. VehicleCompany");
         System.out.println("7. FreshFood\n8. ShowPens\n9. ShowPencils\n10. ShowNoteBook\n11. ShowCars\n12. ShowBicycles\n13. ShowPCs\n14. ShowStorageDevices\n15. ShowSSDs");
-        System.out.println("16. ShowFlashMemories\n17. ShowCPUs\n18. BikeType\n19. Search");
+        System.out.println("16. ShowFlashMemories\n17. ShowCPUs\n18. BikeType\n19. show all commodities\n20. Search\n 21. goto each commodity page (for members)\n0. toExit");
 
-        int option = 20;
-        while (option!=0)
+        int option = 22;
+        while (option!=21&&option!=0)
         {
-            System.out.println("Choose a number if you want to filter commodities if not Enter 0");
+            System.out.println("Choose a number if you want to filter enter 21 to go to search page");
+            option=sc.nextInt();
             switch (option)
             {
                 case 1:
@@ -161,13 +162,27 @@ public class CommodityView {
                     System.out.println(CommodityController.filterBikeType(sc.nextLine()));
                     break;
                 case 19:
+                    System.out.println(Admin.getAdmin().getCommodities());
+
+                case 20:
                     System.out.println("enter name of commodity");
                     sc.nextLine();
                     showCommodity(CommodityController.searchCommodity(sc.nextLine()));
             }
         }
-
-
     }
-
+    public void filter(){
+        boolean search = true;
+        filterView();
+        sc.nextLine();
+        while(search==true){
+        System.out.println("enter name of commodity to go to page if you want to exit from search panel enter Exit ");
+        sc.nextLine();
+        String commodity = sc.nextLine();
+        if(commodity.compareTo("Exit")==0)
+            break;
+        else
+        showCommodity(CommodityController.searchCommodity(commodity));
+    }
+    }
 }
