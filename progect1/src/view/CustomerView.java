@@ -3,6 +3,7 @@ package view;
 import controller.CustomerController;
 import model.commodity.Bill;
 import model.commodity.Commodity;
+import model.discount.WrongDiscount;
 
 import java.util.Scanner;
 
@@ -30,8 +31,7 @@ public class CustomerView {
            }
        }
    }
-   public void longInPageAsCustomer()
-   {
+   public void longInPageAsCustomer() throws WrongDiscount {
        System.out.println("**login Page**");
        System.out.println("Please Enter Your username, password ");
        sc.nextLine();
@@ -50,7 +50,7 @@ public class CustomerView {
 
        }
    }
-   public void userMenu(){
+   public void userMenu() throws WrongDiscount {
        System.out.println("**user menu**");
        int option = 8;
        while (option!=7){
@@ -141,7 +141,7 @@ public class CustomerView {
         for(Commodity commodity :customerController.getCustomerPointer().getShoppingBasket())
             System.out.println(commodity.getName());
     }
-    public void buyingPanel(){
+    public void buyingPanel() throws WrongDiscount {
         System.out.println("**buying**");
         if(customerController.buy()==false)
             System.out.println("your credit is not enough or your shopping basket is empty!");

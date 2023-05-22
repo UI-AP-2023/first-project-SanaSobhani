@@ -48,6 +48,7 @@ public class AdminView {
         System.out.println("SignUpDetermination boolean:isAccepted int:requestNumber");
         System.out.println("IncreaseCreditDetermination boolean:isAccepted int:requestNumber");
         System.out.println("LogInAsAdmin String:userName String:passWord");
+        System.out.println("Allocating Discount To Good Customers");
         System.out.println("CustomerList");
         System.out.println("RequestList");
         System.out.println("Exit");
@@ -61,9 +62,9 @@ public class AdminView {
             if (words[0].compareTo("AddFlashMemory")==0)
                 AdminController.addFlashMemory(words[1],Integer.parseInt(words[2]),Integer.parseInt(words[3]),words[4],Integer.parseInt(words[5]),words[6],Integer.parseInt(words[7]));
             if(words[0].compareTo("AddSSD")==0)
-                AdminController.addSSD(words[1],Integer.parseInt(words[1]),Integer.parseInt(words[2]),words[3],Integer.parseInt(words[4]),Integer.parseInt(words[5]),Integer.parseInt(words[6]),Integer.parseInt(words[7]));
+                AdminController.addSSD(words[1],Integer.parseInt(words[2]),Integer.parseInt(words[3]),words[4],Integer.parseInt(words[5]),Integer.parseInt(words[6]),Integer.parseInt(words[7]),Integer.parseInt(words[8]));
             if(words[0].compareTo("AddPC")==0)
-                AdminController.addPC(words[1],Integer.parseInt(words[2]),Integer.parseInt(words[3]),words[4],words[6],Integer.parseInt(words[7]),Integer.parseInt(words[8]));
+                AdminController.addPC(words[1],Integer.parseInt(words[2]),Integer.parseInt(words[3]),words[4],words[5],Integer.parseInt(words[6]),Integer.parseInt(words[7]));
             if(words[0].compareTo("AddFood")==0)
                 AdminController.addFood(words[1],Integer.parseInt(words[2]),words[3],words[4],Integer.parseInt(words[5]));
             if(words[0].compareTo("AddPencil")==0)
@@ -94,6 +95,8 @@ public class AdminView {
                 visitAllRequests();
             if(words[0].compareTo("CustomerList")==0)
                 visitAllCustomers();
+            if(words[0].compareTo("Allocating")==0)
+                AdminController.allocatingDiscount();
             command = sc.nextLine();
          }
 

@@ -2,7 +2,14 @@ package controller;
 
 import com.sun.deploy.nativesandbox.comm.Request;
 import model.commodity.*;
+import model.discount.Discount;
 import model.user.*;
+import sun.util.resources.LocaleData;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class AdminController {
   public AdminController()
@@ -76,7 +83,7 @@ public class AdminController {
             }
          }
     public static void commentDetermination(boolean isAccepted,int requestNumber){
-      if(isAccepted == true)
+      if(isAccepted)
           Admin.getAdmin().getRequests().get(requestNumber).getComment().findCommodity().getComments().add(Admin.getAdmin().getRequests().get(requestNumber).getComment());
       Admin.getAdmin().getRequests().remove(Admin.getAdmin().getRequests().get(requestNumber));
     }
@@ -98,6 +105,23 @@ public class AdminController {
           return true;
       else
           return false;
+    }
+    public static void allocatingDiscount(){
+        ArrayList<Customer> goodCustomers = new ArrayList<>();
+        LocalDate localeDate = LocalDate.now();
+        localeDate.plusDays(10);
+        Date date = new Date(localeDate.toEpochDay());
+     for(Customer customer : CustomerController.getCustomers())
+     {
+         if(customer.getShoppingHistory().size()>3)
+             goodCustomers.add(customer);
+     }
+     for(Customer customer : goodCustomers)
+     {
+         Discount discount = new Discount(customer.getShoppingHistory().size(),customer.getShoppingHistory().size(),localeDate.plusDays(10));
+         customer.getDiscounts().add(discount);
+
+     }
     }
  }
 

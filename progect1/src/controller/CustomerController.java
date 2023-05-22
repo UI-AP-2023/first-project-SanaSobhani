@@ -1,8 +1,11 @@
 package controller;
 
 import model.commodity.*;
+import model.discount.Discount;
+import model.discount.WrongDiscount;
 import model.user.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.*;
@@ -10,7 +13,6 @@ import java.util.regex.*;
 public class CustomerController {
     private static ArrayList<Customer> customers =new ArrayList<>();
     private static Customer customerPointer;
-
     public CustomerController() {
 
     }
@@ -19,7 +21,7 @@ public class CustomerController {
         return customerPointer;
     }
 
-    public void setCustomerPointer(Customer customerPointer) {
+    public  void setCustomerPointer(Customer customerPointer) {
         this.customerPointer = customerPointer;
     }
 
@@ -140,7 +142,7 @@ public class CustomerController {
         Comment comment = new Comment(txt, commodity.getCommodityID(), customerPointer);
         for (int i = 0; i < customerPointer.getShoppingHistory().size(); i++) {
             for (int j = 0; j < customerPointer.getShoppingHistory().get(i).getCommodities().size(); j++) {
-                if (customerPointer.getShoppingHistory().get(i).getCommodities().get(j).equals(commodity) == true)
+                if (customerPointer.getShoppingHistory().get(i).getCommodities().get(j).equals(commodity))
                     comment.setBought(true);
             }
         }
@@ -164,11 +166,11 @@ public class CustomerController {
 
     public boolean increasingCredit(int credit, String cvv2, String cardPassword, String cardNumber) {
         int validation = 0;
-        if (cardPasswordValidation(cardPassword) == true)
+        if (cardPasswordValidation(cardPassword))
             validation++;
-        if (cardNumberValidation(cardNumber) == true)
+        if (cardNumberValidation(cardNumber))
             validation++;
-        if (cvv2Validation(cvv2) == true)
+        if (cvv2Validation(cvv2))
             validation++;
         if (validation == 3) {
             Admin.getAdmin().getRequests().add(new CustomerRequest(RequestType.INCREASECREDIT, customerPointer, credit));
@@ -197,23 +199,23 @@ public class CustomerController {
         return stationeries;
     }*/
 
-    public ArrayList<Food> filterFood() {
+    /*public ArrayList<Food> filterFood() {
         ArrayList<Food> foods = new ArrayList<>();
         for (Commodity commodity : Admin.getAdmin().getCommodities()) {
             if (commodity.getCategory().equals(CommodityCategory.FOOD) == true)
                 foods.add((Food) commodity);
         }
         return foods;
-    }
+    }*/
 
-    public ArrayList<Vehicle> filterVehicle() {
+    /*public ArrayList<Vehicle> filterVehicle() {
         ArrayList<Vehicle> vehicles = new ArrayList<>();
         for (Commodity commodity : Admin.getAdmin().getCommodities()) {
             if (commodity.getCategory().equals(CommodityCategory.VEHICLE) == true)
                 vehicles.add((Vehicle) commodity);
         }
         return vehicles;
-    }
+    }*/
     public boolean makingShoppingBasket(String name, int count) {
 
         for (Commodity find : Admin.getAdmin().getCommodities()) {
@@ -234,10 +236,22 @@ public class CustomerController {
         }
     }
 
-    public boolean buy() {
+    public boolean buy(String discountCode) throws WrongDiscount {
         int cost =0;
-        Date date = new Date();
-       ArrayList<Commodity> bought = new ArrayList<>();
+        LocalDate date = LocalDate.now();
+        ArrayList<Commodity> bought = new ArrayList<>();
+        Discount discount = null;
+        if(discountCode!=null){
+            for(Discount pointer : customerPointer.getDiscounts())
+                {
+                     if(pointer.getDiscountCode().equals(discountCode))
+                        discount = pointer;
+                }
+            if(discount==null)
+                throw new  WrongDiscount();
+            if(discount.getDate().isBefore(date)&&discount.getCapacity()==0)
+                throw new WrongDiscount();
+        }
         for (Commodity commodity : customerPointer.getShoppingBasket())
         {
             if(commodity.getCount()==0)
@@ -250,6 +264,10 @@ public class CustomerController {
             cost+=commodity.getCost();
             bought.add(commodity);
         }
+        if(discount!=null){
+            cost-=(cost*(discount.getDiscountPercent())/100);
+        }
+
         if(customerPointer.getCredit()>=cost)
         {
             for (Commodity find : customerPointer.getShoppingBasket())
@@ -259,9 +277,13 @@ public class CustomerController {
             customerPointer.setCredit(customerPointer.getCredit()-cost);
             customerPointer.getShoppingHistory().add(new Bill(bought,date.toString(),cost));
             customerPointer.getShoppingBasket().clear();
+            discount.setCapacity(discount.getCapacity()-1);
             return true;
         }
         return false;
+    }
+    public boolean buy() throws WrongDiscount {
+        return buy(null);
     }
 
 }

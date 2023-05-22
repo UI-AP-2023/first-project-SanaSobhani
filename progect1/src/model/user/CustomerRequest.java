@@ -49,6 +49,11 @@ public class CustomerRequest {
     @Override
     public String toString()
     {
+        StringBuilder string = new StringBuilder();
+        if(comment!=null)
+            return comment.toString()+" RequestType: "+type.name();
+        if(increaseCredit!=0)
+            return "Customer: "+customer+" RequestType: "+type.name()+" Amount Of Increase: "+increaseCredit;
         return "Customer: "+customer+" RequestType: "+type.name();
     }
 
