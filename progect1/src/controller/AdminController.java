@@ -134,6 +134,34 @@ public class AdminController {
 
      }
     }
+    public static void addDiscount(String code,int percent){
+     for(Commodity pointer : Admin.getAdmin().getCommodities())
+     {
+         if(pointer.getCommodityID().compareTo(code)==0)
+         {
+             if(pointer instanceof Pen)
+                 ((Pen) pointer).addingDiscount(percent);
+             if(pointer instanceof Pencil)
+                 ((Pencil) pointer).addingDiscount(percent);
+             if(pointer instanceof DigitalCommodity)
+                 ((DigitalCommodity) pointer).addingDiscount(percent);
+         }
+     }
+    }
+    public static void removeDiscount(String code){
+        for(Commodity pointer : Admin.getAdmin().getCommodities())
+        {
+            if(pointer.getCommodityID().compareTo(code)==0)
+            {
+                if(pointer instanceof Pen)
+                    ((Pen) pointer).removingDiscount();
+                if(pointer instanceof Pencil)
+                    ((Pencil) pointer).removingDiscount();
+                if(pointer instanceof DigitalCommodity)
+                    ((DigitalCommodity) pointer).removingDiscount();
+            }
+        }
+    }
  }
 
 
