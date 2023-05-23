@@ -2,7 +2,7 @@ package model.commodity;
 
 import java.util.ArrayList;
 
-public abstract class Commodity {
+public abstract class Commodity implements Comparable<Commodity>{
     private String commodityID;
     private String name;
     private int cost;
@@ -21,7 +21,35 @@ public abstract class Commodity {
         count++;
         makeID();
     }
-
+    @Override
+    public int compareTo(Commodity commodity){
+        if(name.compareTo(commodity.name)>0)
+            return 1;
+        if(name.compareTo(commodity.name)<0)
+            return -1;
+        if(name.compareTo(commodity.name)==0)
+        {
+            if(averageScore> commodity.getAverageScore())
+                return 1;
+            if(averageScore<commodity.getAverageScore())
+                return -1;
+            if(averageScore==commodity.getAverageScore())
+            {
+                if(cost>commodity.getCost())
+                    return 1;
+                if(cost<commodity.getCost())
+                    return -1;
+                if(cost==commodity.getCost())
+                {
+                    if(amountOfInventory>commodity.amountOfInventory)
+                        return 1;
+                    if(amountOfInventory<commodity.getAmountOfInventory())
+                        return -1;
+                }
+            }
+        }
+        return 0;
+    }
     public String getName() {
         return name;
     }
