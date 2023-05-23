@@ -1,4 +1,4 @@
-package model.discount;
+package model.exception;
 
 public class WrongDiscount extends Exception{
     public WrongDiscount(){

@@ -3,7 +3,9 @@ package view;
 import controller.CustomerController;
 import model.commodity.Bill;
 import model.commodity.Commodity;
-import model.discount.WrongDiscount;
+import model.discount.*;
+import model.exception.WrongDiscount;
+
 
 import java.util.Scanner;
 

@@ -2,7 +2,8 @@ package controller;
 
 import model.commodity.*;
 import model.discount.Discount;
-import model.discount.WrongDiscount;
+import model.discount.*;
+import model.exception.WrongDiscount;
 import model.user.*;
 
 import java.time.LocalDate;
