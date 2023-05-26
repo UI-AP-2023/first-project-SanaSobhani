@@ -5,7 +5,6 @@ import model.user.Admin;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.concurrent.Callable;
 
 public class CommodityController {
     public static int AverageCalculation(Commodity commodity){

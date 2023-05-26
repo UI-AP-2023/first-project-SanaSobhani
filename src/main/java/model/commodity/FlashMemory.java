@@ -1,7 +1,5 @@
 package model.commodity;
 
-import com.sun.glass.ui.View;
-
 public class FlashMemory extends StorageDevice{
    private String uSBVersion;
    public FlashMemory(String name,int cost,int weight,String dimension,int capacity,String version,int amountOfInventory)
