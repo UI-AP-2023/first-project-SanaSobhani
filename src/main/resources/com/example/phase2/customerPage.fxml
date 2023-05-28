@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="876.0" style="-fx-background-color: #052c6b;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase2.CustomerPageController">
+   <left>
+      <AnchorPane fx:id="menuPane" prefHeight="518.0" prefWidth="217.0" style="-fx-background-color: #0e64f4;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="accountIcon" layoutX="14.0" layoutY="34.0" mnemonicParsing="false" onAction="#showAccount" prefHeight="48.0" prefWidth="51.0" style="-fx-background-radius: 0; -fx-background-color: #ffffff;" text="Button" textFill="WHITE" />
+            <ImageView fx:id="accountImg" fitHeight="29.0" fitWidth="38.0" layoutX="21.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@acountIcon.JPG" />
+               </image>
+            </ImageView>
+            <Label fx:id="account_lbl" layoutX="86.0" layoutY="45.0" text="visit account" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Button fx:id="basketButton" layoutX="14.0" layoutY="115.0" mnemonicParsing="false" onAction="#showBasket" prefHeight="48.0" prefWidth="51.0" style="-fx-background-radius: 0; -fx-background-color: #ffffff;" text="Button" textFill="WHITE" />
+            <ImageView fx:id="basketImg" fitHeight="44.0" fitWidth="36.0" layoutX="22.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@shoppingBasket2.JPG" />
+               </image>
+            </ImageView>
+            <Label fx:id="basket_lbl" layoutX="86.0" layoutY="126.0" text="shopping basket" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Button fx:id="historyButton" layoutX="14.0" layoutY="194.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="51.0" style="-fx-background-radius: 0; -fx-background-color: #ffffff;" text="Button" textFill="WHITE" />
+            <ImageView fx:id="historyImg" fitHeight="44.0" fitWidth="46.0" layoutX="14.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@history2.JPG" />
+               </image>
+            </ImageView>
+            <Label fx:id="history_lbl" layoutX="86.0" layoutY="205.0" text="shopping history" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Button fx:id="bankButton" layoutX="14.0" layoutY="273.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="51.0" style="-fx-background-radius: 0; -fx-background-color: #ffffff;" text="Button" textFill="WHITE" />
+            <ImageView fx:id="bankImg" fitHeight="47.0" fitWidth="60.0" layoutX="16.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@bankIcon.JPG" />
+               </image>
+            </ImageView>
+            <Label fx:id="bank_lbl" layoutX="86.0" layoutY="287.0" text="bank panel" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Button fx:id="discountButton" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="51.0" style="-fx-background-radius: 0; -fx-background-color: #ffffff;" text="Button" textFill="WHITE" />
+            <ImageView fx:id="discounImg" fitHeight="61.0" fitWidth="48.0" layoutX="16.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@saleIcon3.JPG" />
+               </image>
+            </ImageView>
+            <Label fx:id="discount_lbl" layoutX="86.0" layoutY="371.0" text="your discounts" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </left>
+   <top>
+      <AnchorPane fx:id="topicPane" prefHeight="82.0" prefWidth="876.0" style="-fx-background-color: #0f4eb5;" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="name_lbl" layoutX="199.0" layoutY="22.0" text=" " textFill="WHITE">
+               <font>
+                  <Font name="Harlow Solid Italic" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="welcome_lbl" layoutX="14.0" layoutY="22.0" text="Welcome Dear" textFill="WHITE">
+               <font>
+                  <Font name="Harlow Solid Italic" size="25.0" />
+               </font>
+            </Label>
+            <Button fx:id="backButton" layoutX="797.0" layoutY="9.0" mnemonicParsing="false" onAction="#back" prefHeight="59.0" prefWidth="65.0" style="-fx-background-radius: 200; -fx-background-color: #ffffff;" text="Button" textFill="WHITE" />
+            <ImageView fx:id="backImg" fitHeight="44.0" fitWidth="38.0" layoutX="811.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@flashIcon.JPG" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>

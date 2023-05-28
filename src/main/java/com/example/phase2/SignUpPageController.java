@@ -53,8 +53,8 @@ public class SignUpPageController {
 
     @FXML
     private Label topic2_lbl;
-    private Alert alert = new Alert(Alert.AlertType.ERROR);
-    private CustomerController customerController = new CustomerController();
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+    private static CustomerController customerController = new CustomerController();
     @FXML
     void back(ActionEvent event) throws IOException {
         HelloApplication helloApplication = new HelloApplication();
@@ -64,8 +64,9 @@ public class SignUpPageController {
     void logIn(ActionEvent event) throws IOException {
         if(customerController.login(userNameField1.getText(),passwordField1.getText()))
         {
+
             HelloApplication helloApplication = new HelloApplication();
-            helloApplication.changeScene("CustomerMenu.fxml");
+            helloApplication.changeScene("customerPage.fxml");
         }
         else
             logIn_lbl.setText("you have not sign up yet");
@@ -80,14 +81,17 @@ public class SignUpPageController {
             signUp_lbl.setText("A request is sent to admin");}
         catch (InvalidInput invalidInput){
             alert.setTitle("wrong info!");
-            alert.setContentText("Alert!!!");
+            alert.setContentText(invalidInput.getMessage());
             Optional<ButtonType> result = alert.showAndWait();
-            HelloApplication helloApplication = new HelloApplication();
-            if(result.get() == ButtonType.OK)
+             if(result.get() == ButtonType.OK)
             {
                 HelloApplication helloApplication1 = new HelloApplication();
                 helloApplication1.changeScene("firstPage.fxml");
             }
         }
+    }
+
+    public static CustomerController getCustomerController() {
+        return customerController;
     }
 }
