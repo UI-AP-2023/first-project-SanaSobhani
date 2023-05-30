@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane fx:id="mainPane" prefHeight="566.0" prefWidth="893.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase2.CommentsPageController">
+   <children>
+      <ImageView fx:id="backGroundImg" fitHeight="607.0" fitWidth="1021.0" layoutX="-118.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@product.jpg" />
+         </image>
+      </ImageView>
+      <ScrollPane fx:id="lisPane" layoutX="42.0" layoutY="66.0" prefHeight="495.0" prefWidth="297.0">
+         <content>
+            <ListView fx:id="commentsList" prefHeight="503.0" prefWidth="322.0" />
+         </content>
+      </ScrollPane>
+      <Text fx:id="name_txt" fill="#5126ff" layoutX="393.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" ">
+         <font>
+            <Font name="Calibri Bold" size="37.0" />
+         </font>
+      </Text>
+      <Button fx:id="homeButton" layoutX="782.0" layoutY="20.0" mnemonicParsing="false" onAction="#back" prefHeight="79.0" prefWidth="85.0" style="-fx-background-radius: 50; -fx-background-color: #fbfbfb;" text=" " textFill="#fbfbfb" />
+      <ImageView fx:id="homeImg" fitHeight="50.0" fitWidth="61.0" layoutX="794.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@home3.JPG" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
