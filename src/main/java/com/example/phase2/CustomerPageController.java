@@ -2,15 +2,19 @@ package com.example.phase2;
 import com.example.phase2.controller.CustomerController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class CustomerPageController {
+public class CustomerPageController implements Initializable {
     HelloApplication helloApplication = new HelloApplication();
     @FXML
     private AnchorPane menuPane;
@@ -64,7 +68,7 @@ public class CustomerPageController {
     private AnchorPane topicPane;
 
     @FXML
-   static private Label name_lbl;
+   static private Label name_lbl = new Label();
 
     @FXML
     private Label welcome_lbl;
@@ -74,10 +78,20 @@ public class CustomerPageController {
 
     @FXML
     private ImageView backImg;
+
+    @FXML
+    private Text name_txt;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle){
+        name_txt.setText(CustomerController.getCustomerPointer().getUserName());
+
+    }
+    public static void setLabel(String name){
+        name_lbl.setText(name);
+    }
     public CustomerPageController(){
-        name_lbl = new Label();
-        name_lbl.setText("aaaaaaaa");
         System.out.println(CustomerController.getCustomerPointer().getUserName());
+        //name_lbl=new Label();
     }
     @FXML
     void back(ActionEvent event) throws IOException {
@@ -96,5 +110,19 @@ public class CustomerPageController {
     }
     public static Label getName_lbl() {
         return name_lbl;
+    }
+
+    @FXML
+    void showBankPanel(ActionEvent event) throws IOException {
+        helloApplication.changeScene("bankPanel.fxml");
+    }
+
+    @FXML
+    void showHistory(ActionEvent event) throws IOException {
+        helloApplication.changeScene("historyPage.fxml");
+    }
+    @FXML
+    void showDiscounts(ActionEvent event) throws IOException {
+        helloApplication.changeScene("discountPage.fxml");
     }
 }

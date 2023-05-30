@@ -66,6 +66,8 @@ public class SignUpPageController {
         {
 
             HelloApplication helloApplication = new HelloApplication();
+
+            CustomerPageController.setLabel(customerController.getCustomerPointer().getUserName());
             helloApplication.changeScene("customerPage.fxml");
         }
         else

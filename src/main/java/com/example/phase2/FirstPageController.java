@@ -41,8 +41,9 @@ public class FirstPageController {
     }
 
     @FXML
-    void productPage(ActionEvent event) {
-
+    void productPage(ActionEvent event) throws IOException {
+        HelloApplication helloApplication = new HelloApplication();
+        helloApplication.changeScene("productPage.fxml");
     }
 
     @FXML

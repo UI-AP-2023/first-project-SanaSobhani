@@ -6,15 +6,18 @@ import com.example.phase2.model.exception.InvalidPassword;
 import com.example.phase2.model.exception.InvalidPhoneNumber;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
-public class AccountPageController {
+public class AccountPageController implements Initializable {
 
     @FXML
     private AnchorPane AccountPane;
@@ -45,16 +48,6 @@ public class AccountPageController {
 
     @FXML
     private Label userName_txt;
-
-    @FXML
-    private Label passWord_txt = new Label();
-
-    @FXML
-    private Label phoneNumber_txt = new Label();
-
-    @FXML
-    private Label email_txt = new Label();
-
     @FXML
     private TextField userNameEdition;
 
@@ -90,10 +83,18 @@ public class AccountPageController {
 
     @FXML
     private ImageView emailImg;
+
+    @FXML
+    private Text passWord_txt = new Text();
+
+    @FXML
+    private Text email_txt = new Text();
+    @FXML
+    private Text phone_txt = new Text();
     private Alert alert = new Alert(Alert.AlertType.ERROR);
-    public AccountPageController(){
+    public void initialize(URL url, ResourceBundle resourceBundle){
         email_txt.setText(CustomerController.getCustomerPointer().getEmail());
-        phoneNumber_txt.setText(CustomerController.getCustomerPointer().getPhoneNumber());
+        phone_txt.setText(CustomerController.getCustomerPointer().getPhoneNumber());
         passWord_txt.setText(CustomerController.getCustomerPointer().getPassWord());
     }
     @FXML
