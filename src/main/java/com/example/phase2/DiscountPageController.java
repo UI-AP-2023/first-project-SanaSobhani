@@ -9,6 +9,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -32,12 +33,14 @@ public class DiscountPageController implements Initializable {
     private ListView<String> discontList;
 
     @FXML
-    void back(ActionEvent event) {
-
+    void back(ActionEvent event) throws IOException {
+        HelloApplication helloApplication = new HelloApplication();
+        helloApplication.changeScene("customerPage.fxml");
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
       for (Discount discount : SignUpPageController.getCustomerController().getCustomerPointer().getDiscounts())
-          discontList.getItems().add(discount.getDiscountCode());
+      {discontList.getItems().add(discount.getDiscountCode());
+          System.out.println(discount.getDiscountCode());}
     }
 }
