@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="AccountPane" prefHeight="629.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase2.AccountPageController">
+   <children>
+      <ImageView fx:id="backGroundImg" fitHeight="642.0" fitWidth="941.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@43022.jpg" />
+         </image>
+         <effect>
+            <BoxBlur height="14.56" iterations="3" width="17.75" />
+         </effect>
+      </ImageView>
+      <Label fx:id="topic_lbl" layoutX="31.0" layoutY="46.0" text="Your Account">
+         <font>
+            <Font name="Calibri Bold" size="57.0" />
+         </font>
+      </Label>
+      <Button fx:id="backButton" layoutX="799.0" layoutY="50.0" mnemonicParsing="false" onAction="#back" prefHeight="59.0" prefWidth="65.0" style="-fx-background-radius: 200; -fx-background-color: #ffffff;" textFill="WHITE" />
+      <ImageView fx:id="backImg" fitHeight="35.0" fitWidth="31.0" layoutX="819.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@flashIcon.JPG" />
+         </image>
+      </ImageView>
+      <Text fx:id="passWord_lbl" layoutX="31.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="pass word">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Text>
+      <Text fx:id="phoneNumber_lbl" layoutX="31.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="phone number">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Text>
+      <Text fx:id="email_lbl" layoutX="31.0" layoutY="489.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Text>
+      <TextField fx:id="passWordEdition" layoutX="603.0" layoutY="240.0" promptText="pass word" />
+      <TextField fx:id="phoneNumberEdition" layoutX="603.0" layoutY="351.0" promptText="phone number" />
+      <TextField fx:id="emailEditiion" layoutX="603.0" layoutY="457.0" promptText="email" />
+      <Button fx:id="phoneNumberButton" layoutX="801.0" layoutY="349.0" mnemonicParsing="false" onAction="#editPhone" prefHeight="35.0" prefWidth="46.0" style="-fx-background-color: #ffffff; -fx-background-radius: 200;" text=" " textFill="WHITE" />
+      <ImageView fx:id="phoneImg" fitHeight="31.0" fitWidth="38.0" layoutX="809.0" layoutY="351.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pen.JPG" />
+         </image>
+      </ImageView>
+      <Button fx:id="emailButton" layoutX="808.0" layoutY="452.0" mnemonicParsing="false" onAction="#editEmail" prefHeight="35.0" prefWidth="46.0" style="-fx-background-color: #ffffff; -fx-background-radius: 200;" text=" " textFill="WHITE" />
+      <ImageView fx:id="emailImg" fitHeight="31.0" fitWidth="38.0" layoutX="807.0" layoutY="457.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pen.JPG" />
+         </image>
+      </ImageView>
+      <Button fx:id="passWordButton" layoutX="801.0" layoutY="236.0" mnemonicParsing="false" onAction="#editPassWord" prefHeight="39.0" prefWidth="46.0" style="-fx-background-color: #ffffff; -fx-background-radius: 200;" text=" " textFill="WHITE" />
+      <ImageView fx:id="passWordImg" fitHeight="31.0" fitWidth="38.0" layoutX="809.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pen.JPG" />
+         </image>
+      </ImageView>
+      <Text fx:id="passWord_txt" layoutX="390.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" ">
+         <font>
+            <Font name="Calibri" size="26.0" />
+         </font>
+      </Text>
+      <Text fx:id="phone_txt" layoutX="393.0" layoutY="373.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" ">
+         <font>
+            <Font name="Calibri" size="26.0" />
+         </font>
+      </Text>
+      <Text fx:id="email_txt" layoutX="393.0" layoutY="478.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" ">
+         <font>
+            <Font name="Calibri" size="26.0" />
+         </font>
+      </Text>
+      <Text fx:id="credit_txt" layoutX="31.0" layoutY="577.0" strokeType="OUTSIDE" strokeWidth="0.0" text="credit">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Text>
+      <Text fx:id="credit_text1" layoutX="396.0" layoutY="567.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" ">
+         <font>
+            <Font name="Calibri" size="26.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

@@ -1,6 +1,7 @@
 package model.user;
 
 import model.commodity.*;
+import model.discount.Discount;
 
 import java.util.ArrayList;
 
@@ -8,6 +9,7 @@ public class Customer extends Account {
     private int credit;
     private ArrayList<Commodity> shoppingBasket = new ArrayList<>();
     private ArrayList<Bill> shoppingHistory = new ArrayList<>();
+    private ArrayList <Discount> discounts = new ArrayList<>();
    public Customer(String email,String phoneNumber,String passWord,String userName)
     {
         super(email,phoneNumber,passWord,userName);
@@ -44,5 +46,13 @@ public class Customer extends Account {
         for (int i = 0;i<shoppingBasket.size();i++)
             info.append(shoppingBasket.get(i).getName()+"/");
         return info.toString();
+    }
+
+    public ArrayList<Discount> getDiscounts() {
+        return discounts;
+    }
+
+    public void setDiscounts(ArrayList<Discount> discounts) {
+        this.discounts = discounts;
     }
 }

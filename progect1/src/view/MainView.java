@@ -1,6 +1,7 @@
 package view;
 
 import controller.CustomerController;
+import model.discount.WrongDiscount;
 
 import java.util.Scanner;
 
@@ -19,7 +20,7 @@ public class MainView {
        System.out.println("[5] Exit");
        System.out.println("Choose your option");
    }
-   public void mainView() {
+   public void mainView() throws WrongDiscount {
        int option = 6;
        while (option != 5) {
            mainMenu();
