@@ -244,7 +244,8 @@ public class CustomerController {
             customerPointer.setCredit(customerPointer.getCredit()-cost);
             customerPointer.getShoppingHistory().add(new Bill(bought,date.toString(),cost));
             customerPointer.getShoppingBasket().clear();
-            discount.setCapacity(discount.getCapacity()-1);
+            if(discount!=null)
+                discount.setCapacity(discount.getCapacity()-1);
             return true;
         }
         if(customerPointer.getCredit()<cost)
