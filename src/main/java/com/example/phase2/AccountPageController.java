@@ -91,11 +91,18 @@ public class AccountPageController implements Initializable {
     private Text email_txt = new Text();
     @FXML
     private Text phone_txt = new Text();
+
+    @FXML
+    private Text credit_txt;
+
+    @FXML
+    private Text credit_text1 = new Text();
     private Alert alert = new Alert(Alert.AlertType.ERROR);
     public void initialize(URL url, ResourceBundle resourceBundle){
         email_txt.setText(CustomerController.getCustomerPointer().getEmail());
         phone_txt.setText(CustomerController.getCustomerPointer().getPhoneNumber());
         passWord_txt.setText(CustomerController.getCustomerPointer().getPassWord());
+        credit_text1.setText(String.valueOf(CustomerController.getCustomerPointer().getCredit()));
     }
     @FXML
     void back(ActionEvent event) throws IOException {
