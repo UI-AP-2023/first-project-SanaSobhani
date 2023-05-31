@@ -125,7 +125,7 @@ public class AdminController {
         Date date = new Date(localeDate.toEpochDay());
      for(Customer customer : CustomerController.getCustomers())
      {
-         if(customer.getShoppingHistory().size()>3)
+         if(customer.getShoppingHistory().size()>=1)
              goodCustomers.add(customer);
      }
      for(Customer customer : goodCustomers)
