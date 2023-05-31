@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -47,6 +48,8 @@ public class BasketPageController implements Initializable {
         private TextField discountField;
 
         @FXML
+        private Text successful_txt;
+        @FXML
         private ImageView discountImg;
         Alert alert = new Alert(Alert.AlertType.ERROR);
         @Override
@@ -56,6 +59,7 @@ public class BasketPageController implements Initializable {
                         for(Commodity commodity : SignUpPageController.getCustomerController().getCustomerPointer().getShoppingBasket())
                                 basketList.getItems().add(commodity.toString());
                 }
+                discountField.setText(null);
         }
         @FXML
         void back(ActionEvent event) throws IOException {
@@ -67,13 +71,17 @@ public class BasketPageController implements Initializable {
         void buy(ActionEvent event) {
                 try{
                         if(discountField.getText()!=null){
-                           if(!SignUpPageController.getCustomerController().buy())
+                           if(!SignUpPageController.getCustomerController().buy(discountField.getText()))
                                    buy_lbl2.setText("not successful");
+                           else
+                                   successful_txt.setText("successful");
                         }
                         else
                         {
-                               if(!SignUpPageController.getCustomerController().buy(discountField.getText()))
+                               if(!SignUpPageController.getCustomerController().buy())
                                         buy_lbl2.setText("not successful");
+                               else
+                                       successful_txt.setText("successful");
                         }
                 }
                 catch (Exception exception){

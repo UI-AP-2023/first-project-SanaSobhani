@@ -10,6 +10,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="mainPane" prefHeight="733.0" prefWidth="875.0" style="-fx-background-color: #020e2b;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase2.BasketPageController">
    <children>
@@ -21,12 +22,12 @@
             <BoxBlur iterations="3" />
          </effect>
       </ImageView>
-      <Button fx:id="buyButton" layoutX="660.0" layoutY="633.0" mnemonicParsing="false" onAction="#buy" prefHeight="50.0" prefWidth="204.0" style="-fx-background-radius: 30; -fx-background-color: #ffffff;" text="      Buy" textFill="#0fcdda">
+      <Button fx:id="buyButton" layoutX="657.0" layoutY="590.0" mnemonicParsing="false" onAction="#buy" prefHeight="50.0" prefWidth="204.0" style="-fx-background-radius: 30; -fx-background-color: #ffffff;" text="      Buy" textFill="#0fcdda">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
       </Button>
-      <ImageView fx:id="buyImg" fitHeight="36.0" fitWidth="67.0" layoutX="673.0" layoutY="642.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="buyImg" fitHeight="36.0" fitWidth="67.0" layoutX="671.0" layoutY="597.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@CheckMark.JPG" />
          </image>
@@ -49,11 +50,16 @@
       </ImageView>
       <Label fx:id="buy_lbl" layoutX="271.0" layoutY="677.0" text=" " textFill="#00fc2e" />
       <Label fx:id="buy_lbl2" layoutX="390.0" layoutY="677.0" text=" " textFill="#ff0707" />
-      <TextField fx:id="discountField" layoutX="60.0" layoutY="624.0" prefHeight="36.0" prefWidth="156.0" promptText="discount code" style="-fx-background-radius: 30;" />
-      <ImageView fx:id="discountImg" fitHeight="36.0" fitWidth="41.0" layoutY="625.0" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="discountField" layoutX="60.0" layoutY="589.0" prefHeight="36.0" prefWidth="156.0" promptText="discount code" style="-fx-background-radius: 30;" />
+      <ImageView fx:id="discountImg" fitHeight="36.0" fitWidth="41.0" layoutX="14.0" layoutY="590.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@saleIcon3.JPG" />
          </image>
       </ImageView>
+      <Text fx:id="successful_txt" fill="#2bff00" layoutX="657.0" layoutY="563.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
