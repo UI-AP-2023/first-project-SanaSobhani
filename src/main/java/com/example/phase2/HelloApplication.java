@@ -22,7 +22,11 @@ public class HelloApplication extends Application {
         newStage.getScene().setRoot(pane);
         newStage.show();
     }
-    public static void main(String[] args) {
-        launch();
+   public static void main(String[] args) {
+        try{
+        launch();}
+        finally {
+            System.out.println("GOOD LUCK");
+        }
     }
 }
