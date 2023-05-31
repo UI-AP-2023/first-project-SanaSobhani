@@ -35,8 +35,8 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Button fx:id="historyButton" layoutX="14.0" layoutY="194.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="51.0" style="-fx-background-radius: 0; -fx-background-color: #ffffff;" text="Button" textFill="WHITE" />
-            <ImageView fx:id="historyImg" fitHeight="44.0" fitWidth="46.0" layoutX="14.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+            <Button fx:id="historyButton" layoutX="14.0" layoutY="194.0" mnemonicParsing="false" onAction="#showHistory" prefHeight="48.0" prefWidth="51.0" style="-fx-background-radius: 0; -fx-background-color: #ffffff;" text="Button" textFill="WHITE" />
+            <ImageView fx:id="historyImg" fitHeight="37.0" fitWidth="45.0" layoutX="20.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@history2.JPG" />
                </image>
@@ -47,7 +47,7 @@
                </font>
             </Label>
             <Button fx:id="bankButton" layoutX="14.0" layoutY="273.0" mnemonicParsing="false" onAction="#showBankPanel" prefHeight="48.0" prefWidth="51.0" style="-fx-background-radius: 0; -fx-background-color: #ffffff;" text="Button" textFill="WHITE" />
-            <ImageView fx:id="bankImg" fitHeight="47.0" fitWidth="60.0" layoutX="16.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="bankImg" fitHeight="40.0" fitWidth="44.0" layoutX="19.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@bankIcon.JPG" />
                </image>
@@ -57,8 +57,8 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Button fx:id="discountButton" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="51.0" style="-fx-background-radius: 0; -fx-background-color: #ffffff;" text="Button" textFill="WHITE" />
-            <ImageView fx:id="discounImg" fitHeight="61.0" fitWidth="48.0" layoutX="16.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+            <Button fx:id="discountButton" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#showDiscounts" prefHeight="48.0" prefWidth="51.0" style="-fx-background-radius: 0; -fx-background-color: #ffffff;" text="Button" textFill="WHITE" />
+            <ImageView fx:id="discounImg" fitHeight="26.0" fitWidth="41.0" layoutX="24.0" layoutY="371.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@saleIcon3.JPG" />
                </image>
@@ -85,12 +85,28 @@
                   <Image url="@flashIcon.JPG" />
                </image>
             </ImageView>
-            <Text fx:id="name_txt" fill="WHITE" layoutX="180.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sana">
+            <Text fx:id="name_txt" fill="WHITE" layoutX="180.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" ">
                <font>
                   <Font name="Harlow Solid Italic" size="27.0" />
                </font>
             </Text>
+            <ImageView fitHeight="42.0" fitWidth="45.0" layoutX="451.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="37.0" fitWidth="37.0" layoutX="452.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </top>
+   <center>
+      <Button fx:id="productPButton" mnemonicParsing="false" onAction="#gotoPtoductsPage" prefHeight="54.0" prefWidth="321.0" style="-fx-background-radius: 30; -fx-background-color: #ffffff;" text=" products page" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Calibri Bold" size="22.0" />
+         </font>
+         <graphic>
+            <ImageView fx:id="productsImg" fitHeight="60.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@product%20button.JPG" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </center>
 </BorderPane>

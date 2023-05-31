@@ -80,6 +80,11 @@ public class CustomerPageController implements Initializable {
     private ImageView backImg;
 
     @FXML
+    private Button productPButton;
+
+    @FXML
+    private ImageView productsImg;
+    @FXML
     private Text name_txt;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
@@ -93,6 +98,12 @@ public class CustomerPageController implements Initializable {
         System.out.println(CustomerController.getCustomerPointer().getUserName());
         //name_lbl=new Label();
     }
+
+    @FXML
+    void gotoPtoductsPage(ActionEvent event) throws IOException {
+        helloApplication.changeScene("productPage.fxml");
+    }
+
     @FXML
     void back(ActionEvent event) throws IOException {
         helloApplication.changeScene("SignUpPageController.fxml");
