@@ -7,6 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.Optional;
 
 public class BankPanelController {
@@ -32,8 +33,9 @@ public class BankPanelController {
         @FXML
         private TextField numberField4;
 
+
         @FXML
-        private TextField credit_lbl;
+        private Label credit_lbl;
 
         @FXML
         private Label cardPassWord_lbl;
@@ -57,7 +59,7 @@ public class BankPanelController {
         private Button homeButton;
 
         @FXML
-        private Label creditField;
+        private TextField creditField;
         @FXML
         private ImageView homeImg;
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -75,8 +77,9 @@ public class BankPanelController {
                 cardNumber.append(numberField3.getText());
                 cardNumber.append(numberField4.getText());
                 System.out.println(cardNumber.toString());
-                System.out.println(Integer.valueOf(creditField.getText()));
-                if (SignUpPageController.getCustomerController().increasingCredit(Integer.valueOf(creditField.getText()), cvv2Field.getText(), passWordField.getText(), cardNumber.toString()))
+                Integer test = Integer.valueOf(creditField.getText());
+                System.out.println(test.intValue());
+                if (SignUpPageController.getCustomerController().increasingCredit(test.intValue(), cvv2Field.getText(), passWordField.getText(), cardNumber.toString()))
                         increase_lbl.setText("A request is sent to admin");
                 else
                 {

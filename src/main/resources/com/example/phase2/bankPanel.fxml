@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="mainPane" prefHeight="600.0" prefWidth="875.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase2.BankPanelController">
    <children>
       <ImageView fx:id="backGroundImg" fitHeight="659.0" fitWidth="990.0" layoutX="-3.0" layoutY="-29.0" pickOnBounds="true" preserveRatio="true">
@@ -30,7 +29,7 @@
       <TextField fx:id="numberField2" layoutX="299.0" layoutY="246.0" prefHeight="43.0" prefWidth="126.0" promptText="****" style="-fx-background-radius: 15;" />
       <TextField fx:id="numberField3" layoutX="493.0" layoutY="238.0" prefHeight="43.0" prefWidth="126.0" promptText="****" style="-fx-background-radius: 15;" />
       <TextField fx:id="numberField4" layoutX="669.0" layoutY="238.0" prefHeight="43.0" prefWidth="126.0" promptText="****" style="-fx-background-radius: 15;" />
-      <Label fx:id="creditField" layoutX="16.0" layoutY="133.0" text="How much money you want to increase" textFill="#0970d7">
+      <Label fx:id="credit_lbl" layoutX="16.0" layoutY="133.0" text="How much money you want to increase" textFill="#0970d7">
          <font>
             <Font name="Bodoni MT" size="22.0" />
          </font>
@@ -51,7 +50,7 @@
             <Font name="Bodoni MT" size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="credit_lbl" layoutX="608.0" layoutY="133.0" prefHeight="31.0" prefWidth="218.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="creditField" layoutX="608.0" layoutY="133.0" prefHeight="31.0" prefWidth="218.0" style="-fx-background-radius: 20;" />
       <Label fx:id="increase_lbl" layoutX="732.0" layoutY="471.0" text=" " textFill="#33da00" />
       <PasswordField fx:id="passWordField" layoutX="142.0" layoutY="355.0" prefHeight="43.0" prefWidth="187.0" promptText="******" style="-fx-background-radius: 20;" />
       <Button fx:id="homeButton" layoutX="772.0" layoutY="24.0" mnemonicParsing="false" onAction="#back" prefHeight="79.0" prefWidth="85.0" style="-fx-background-radius: 50; -fx-background-color: #fbfbfb;" text=" " textFill="#fbfbfb" />
